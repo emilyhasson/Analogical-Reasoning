@@ -5,7 +5,7 @@ This project is a tool for the detection of analogical reasoning in annual repor
 
 ## Prerequisites
 - The pipeline is developed and tested on Windows 11 with Python 3.11.5.
-- Utilizes Microsoft® Excel® for Microsoft 365 MSO (Version 2310 Build 16.0.16924.20054) 64-bit.
+- Utilizes Microsoft® Excel® for Microsoft 365 MSO Version 2310.
 - Requirements and dependencies listed in requirements.txt.
 
 ## Directory Structure
@@ -17,40 +17,24 @@ The project directory is organized as follows:
 project_root/
 │
 ├── analogy-detection/
-│ ├── raw_data/
-│ │ ├── dataset1.csv
-│ │ ├── dataset2.csv
-│ │ └── ...
-│ ├── processed_data/
-│ │ ├── preprocessed_dataset1.csv
-│ │ ├── preprocessed_dataset2.csv
-│ │ └── ...
+│ ├── classify-responses.py
+│ ├── config.py
+│ └── gpt-query.py
 │
 ├── data-generation/
-│ ├── scripts/
-│ │ ├── data_preprocessing.py
-│ │ ├── feature_engineering.py
-│ │ └── ...
-│ ├── utils/
-│ │ ├── helper_functions.py
-│ │ └── constants.py
-│ └── main.py
+│ ├── extract-positive.py
+│ └── human-validate.py
 │
 ├── pdf-recognition/
-│ ├── exploratory_analysis.ipynb
-│ ├── model_training.ipynb
-│ └── ...
+│ ├── annual-reports-pdf/
+| ├── annual-reports-txt/
+| ├── PDFtoText.py
+│ └── config.json
 │
 ├── text-cleaning/
-│ ├── model/
-│ │ ├── trained_model.pkl
-│ │ └── ...
-│ ├── visualizations/
-│ │ ├── correlation_plot.png
-│ │ └── ...
-│ └── logs/
-│ ├── log_file.txt
-│ └── ...
+│ ├── raw-data/
+│ ├── split-texts/
+│ └── nexis-split.py
 │
 ├── README.md
 ├── requirements.txt
@@ -107,6 +91,7 @@ project_root/
 - Validation steps and expected results.
 
 ## Performance Considerations
+- This project utilizes GPT 3.5 Turbo as of December 2023. Note that updates to GPT API will require updating the source code.
 - Discussion on scalability and performance.
 - Known limitations and areas for improvement.
 
