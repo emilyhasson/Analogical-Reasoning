@@ -1,7 +1,7 @@
 # Analogical Reasoning Detection Pipeline Documentation
 
 ## Overview
-This project is a tool for the detection of analogical reasoning in annual reports. It consists of a multi-step pipeline with accommodation for scanned document images via OCR and for Nexis Uni multi-document downloads, though any text documents can be used with proper accomodation and cleaning.
+This project is a tool for the detection of analogical reasoning in annual reports. It consists of a multi-step pipeline with accommodation for scanned document images via OCR and for Nexis Uni multi-document downloads, though any text documents can be used with proper accomodation and cleaning. The final output will be a dataset with GPT-detected analogies labeled as accurate or inaccurate. This data may be used as-is for analysis or used to fine-tune an LLM for more accurate analogy detection.
 
 ## Prerequisites
 - The pipeline is developed and tested on Windows 11 with Python 3.11.5.
@@ -9,8 +9,6 @@ This project is a tool for the detection of analogical reasoning in annual repor
 - Requirements and dependencies listed in requirements.txt.
 
 ## Directory Structure
-- Explanation of the project directory structure.
-- Purpose of each major folder and organization of files.
 
 The project directory is organized as follows:
 ```plaintext
@@ -60,13 +58,21 @@ project_root/
 - **requirements.txt:** List of project dependencies.
 
 ## Installation
-- Step-by-step instructions for setting up the environment.
-- Configuration settings and any special considerations.
+
+- For Nexis Uni batch downloads, convert the PDF to a .txt file and place it in text-cleaning/raw-data/.
+- For other text files, place them directly in text-cleaning/split-texts/ and proceed as usual.
+- For PDF conversions, place your PDF documents in pdf-recognition/annual-reports-pdf/.
+
+Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the project. There are many free or open-source conversion apps available online.
 
 ## Data Processing Steps
 
-1. s
-2. 
+1. Data Preprocessing:
+   a. FOR NEXIS UNI BATCH DOWNLOADS:
+   b. FOR PDF SCANNED DOCUMENTS:
+2. GPT Query
+3. Response Classification
+4. Human Verification
 
 ## Code Comments
 - TODO add Comments within the code for clarity.
