@@ -124,10 +124,7 @@ After the human verification step, you will produce an Excel file of the followi
 ## Examples and Use Cases
 - Practical examples demonstrating pipeline use.
 - Sample commands or scripts for typical cases.
-
-## References
-- Citations and references to relevant papers or libraries.
- 
+  
 ## Contact Information
 - Feel free to reach out to emilyhasson927@gmail.com for any questions or clarifications.
 
