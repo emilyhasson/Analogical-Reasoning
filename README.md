@@ -87,8 +87,14 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
           7. Run pdf-recognition/PDFtoText.py.
           8. Results will be saved in pdf-recognition/outputs/.
 2. GPT Query
-3. Response Classification
-4. Human Verification
+   1. If you used OCR, switch the TEXTS_FOLDER parameter in analogy-detection/gpt-query.py to "../pdf-recognition/outputs/". If you did not use OCR, no change is required.
+   2. Run analogy-detection/gpt-query.py.
+   3. Query response results will be saved to analogy-detection/query-response-data.xlsx. Records of the content of the queries will be recorded in analogy-detection/query-data.csv.
+4. Response Classification
+   1. Run data-generation/extract-positive.py. Verify that results are saved to data-generation/positive-responses.csv.
+6. Human Verification
+   1. Run data-generation/human-validate.py. You will be guided through verifying each detected analogy. You may close the window at any time, and progress will be saved.
+   2. Your final results will be saved in data-generation/user-responses.xlsx.
 
 ## Code Comments
 - TODO add Comments within the code for clarity.
@@ -98,12 +104,17 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 - This project utilizes GPT 3.5 Turbo as of December 2023. Using a different model may improve performance, and may be necessary as APIs are updated.
 
 ## Error Handling
-- Documentation of potential errors and issues.
-- Troubleshooting steps and solutions for common problems.
+- If you experience slow response times with your GPT queries, you may benefit from running analogy-detection/gpt-query.py on small batches of files rather than all at once. The simplest method would be to create a folder to hold a few documents at a time and update TEXTS_FOLDER to this new location.
 
 ## Outputs
-- Description of expected outputs at each pipeline stage.
-- Sample output files or visualizations if applicable.
+After the human verification step, you will produce an Excel file of the following format:
+
+| FILE | CONTENT | USER-RESPONSE |
+|----------|----------|----------|
+| filename-1.txt | GPT Response 1 | No |
+| filename-2.txt | GPT Response 2 | Yes |
+| filename-3.txt | GPT Response 3 | Flag |
+
 
 ## Testing and Validation
 - Guidelines for testing the pipeline on small datasets.
@@ -119,7 +130,7 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 
 ## References
 - Citations and references to relevant papers or libraries.
-
+ 
 ## Contact Information
 - Information for reaching out with questions or clarifications.
 
