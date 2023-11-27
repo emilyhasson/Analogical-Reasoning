@@ -88,8 +88,9 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
           8. Results will be saved in pdf-recognition/outputs/.
 2. GPT Query
    1. If you used OCR, switch the TEXTS_FOLDER parameter in analogy-detection/gpt-query.py to "../pdf-recognition/outputs/". If you did not use OCR, no change is required.
-   2. Run analogy-detection/gpt-query.py.
-   3. Query response results will be saved to analogy-detection/query-response-data.xlsx. Records of the content of the queries will be recorded in analogy-detection/query-data.csv.
+   2. Generate an OpenAI key and add it to the project via your preferred method.
+   3. Run analogy-detection/gpt-query.py.
+   4. Query response results will be saved to analogy-detection/query-response-data.xlsx. Records of the content of the queries will be recorded in analogy-detection/query-data.csv.
 4. Response Classification
    1. Run data-generation/extract-positive.py. Verify that results are saved to data-generation/positive-responses.csv.
 6. Human Verification
@@ -98,6 +99,7 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 
 ## Code Comments
 - TODO add Comments within the code for clarity.
+- TODO add test data.
 - Explanation of major functions, blocks, or operations.
 
 ## Parameters and Configurations
@@ -105,6 +107,7 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 
 ## Error Handling
 - If you experience slow response times with your GPT queries, you may benefit from running analogy-detection/gpt-query.py on small batches of files rather than all at once. The simplest method would be to create a folder to hold a few documents at a time and update TEXTS_FOLDER to this new location.
+- As of December 2023 the API's timeout parameter does not seem to be working, so sometimes GPT gets "stuck" and may take up to ten minutes waiting before throwing an error. The error will be caught and the query repeated, but be aware that this may considerably increase the amout of time it takes the code to run.
 
 ## Outputs
 After the human verification step, you will produce an Excel file of the following format:
@@ -115,14 +118,8 @@ After the human verification step, you will produce an Excel file of the followi
 | filename-2.txt | GPT Response 2 | Yes |
 | filename-3.txt | GPT Response 3 | Flag |
 
-
-## Testing and Validation
-- Guidelines for testing the pipeline on small datasets.
-- Validation steps and expected results.
-
 ## Performance Considerations
-- Discussion on scalability and performance.
-- Known limitations and areas for improvement.
+- GPT 3.5 Turbo is affordable and fast, but given the quantity of data being processed, it may take considerable time to complete all queries.
 
 ## Examples and Use Cases
 - Practical examples demonstrating pipeline use.
@@ -132,24 +129,9 @@ After the human verification step, you will produce an Excel file of the followi
 - Citations and references to relevant papers or libraries.
  
 ## Contact Information
-- Information for reaching out with questions or clarifications.
+- Feel free to reach out to emilyhasson927@gmail.com for any questions or clarifications.
 
 ## Version History
-- Record of changes and updates to the pipeline.
+- Documentation and full file structure committed 12/10/2023.
 
-## License
-- Specification of the pipeline and documentation license.
-
-## Acknowledgments
-- Recognition of contributors, libraries, or tools.
-
-## Conclusion
-- Summary of key points.
-- Encouragement for feedback.
-
-## Appendix
-- Additional resources or supplementary documentation.
-
-## Testing Documentation
-- Section detailing how the pipeline has been tested.
-- Information on test datasets used.
+  
