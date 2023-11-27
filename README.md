@@ -68,8 +68,24 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 ## Data Processing Steps
 
 1. Data Preprocessing:
-   a. FOR NEXIS UNI BATCH DOWNLOADS:
-   b. FOR PDF SCANNED DOCUMENTS:
+   1. FOR NEXIS UNI BATCH DOWNLOADS:
+      1. Add .txt files to text-cleaning/raw-data/.
+      2. Run text-cleaning/nexis-split.py.
+      3. Verify that text documents have been created in text-cleaning/split-texts/.
+   2. FOR PDF SCANNED DOCUMENTS:
+      1. Configure Google Cloud Platform.
+          1. Navigate to GCP dashboard and create a new project.
+          2. Create a storage bucket within the project.
+          3. Add two sub-folders to the bucket, one for pdfs and one for OCR results.
+          4. Upload your PDF files to the PDF folder in GCP.
+          5. Generate GCP credentials.
+          6. Within pdf-recognition/PDFtoText.py, you will need to adjust the following parameters:
+             - os.environ['GOOGLE_APPLICATION_CREDENTIALS']: GCP credentials .json file.
+             - SOURCE_URI: Your PDF bucket URI. Ex: 'gs://pdf-ocr/pdfs/'
+             - DEST_URI: Your OCR results bucket URI.
+             - BUCKET_NAME: Your bucket name. Ex: 'pdf-ocr'
+          7. Run pdf-recognition/PDFtoText.py.
+          8. Results will be saved in pdf-recognition/outputs/.
 2. GPT Query
 3. Response Classification
 4. Human Verification
@@ -79,8 +95,7 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 - Explanation of major functions, blocks, or operations.
 
 ## Parameters and Configurations
-- List and explanation of all parameters and configurations.
-- Guidelines for adjusting parameters effectively.
+- This project utilizes GPT 3.5 Turbo as of December 2023. Using a different model may improve performance, and may be necessary as APIs are updated.
 
 ## Error Handling
 - Documentation of potential errors and issues.
@@ -95,7 +110,6 @@ Note: Conversion from PDF -> .txt, image -> PDF, etc. not included within the pr
 - Validation steps and expected results.
 
 ## Performance Considerations
-- This project utilizes GPT 3.5 Turbo as of December 2023. Note that updates to GPT API will require updating the source code.
 - Discussion on scalability and performance.
 - Known limitations and areas for improvement.
 
